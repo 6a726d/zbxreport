@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<a href="/" class="home-icon">
+    <i class="fa-solid fa-house-chimney"></i>
+</a>
+
+<div class="container custom-container-border">
+    <div class="row">
+        <div class="col">
+            <h2 class="text-white text-center">Cabeçalho</h2>
+            <form id="form1" action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="save-layout">
+                <div class="form-group mb-3">
+                    <label for="empresaInput" class="text-white">Nome do Layout</label>
+                    <input type="text" class="form-control" id="empresaInput" placeholder="Nome do Layout" name="layoutname" required>
+                </div>
+                <!-- Campo Empresa -->
+                <div class="form-group mb-3">
+                    <label for="empresaInput" class="text-white">Empresa</label>
+                    <input type="text" class="form-control" id="empresaInput" placeholder="Nome da Empresa" name="layoutemp">
+                </div>
+                
+                <!-- Input de imagem para Logo -->
+                <div class="form-group mb-3">
+                    <label for="logoInput" class="text-white">Logo</label>
+                    <input type="file" class="form-control-file" id="logoInput" name="layoutlogo">
+                </div>
+                
+                <!-- Campo Descrição -->
+                <div class="form-group mb-3">
+                    <label for="descricaoTextarea" class="text-white">Descrição</label>
+                    <textarea class="form-control" id="descricaoTextarea" rows="3" placeholder="Informações do cabeçalho" name="layoutdsc"></textarea>
+                </div>
+                
+                <div class="row">
+                    <h2 class="text-white mb-3 text-center">Itens do Host</h2>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <input type="text" id="filterList1" class="form-control mb-2" placeholder="Caixa de pesquisa">
+                            <select multiple class="form-control" id="list1" style="height: 200px;">
+                                {% for i in itens %}
+                                <option value="{{ i.pk }}">{{ i.itemname }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-2 d-flex flex-column justify-content-center align-items-center">
+                            <button type="button" id="toRight" class="btn btn-default mb-2 text-white"><i class="fa-solid fa-arrow-right fa-lg"></i></button>
+                            <button type="button" id="toLeft" class="btn btn-default text-white"><i class="fa-solid fa-arrow-left fa-lg"></i></button>
+                        </div>
+                        <div class="col-md-5">
+                            <input type="text" id="filterList2" class="form-control mb-2" placeholder="Caixa de pesquisa">
+                            <select multiple class="form-control" id="list2" name="selectedItems[]" style="height: 200px;">
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- Botão de envio -->
+                <button type="submit" class="btn btn-primary btn-lg btn-block w-100 mb-3 mt-5">Salvar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

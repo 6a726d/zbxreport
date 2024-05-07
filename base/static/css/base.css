@@ -1,0 +1,197 @@
+body {
+    background-color: #333;
+}
+
+.logo {
+    width: 50vh;
+}
+
+.btn-custom {
+    background-color: #5A6268; /* Cor de fundo do botão */
+    border-color: #545B62; /* Cor da borda do botão */
+    color: #FFFFFF; /* Cor do texto do botão */
+}
+
+.btn-custom:hover {
+    background-color: #545B62; /* Cor de fundo do botão ao passar o mouse */
+    border-color: #4E555B; /* Cor da borda do botão ao passar o mouse */
+}
+
+.logohead {
+    width: 70vh;
+}
+
+.logofoot {
+    width: 20vh;
+}
+
+.logout-icon {
+    background: none;
+    border: none;
+    color: white;
+    position: absolute;
+    top: 30px;
+    right: 120px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.logout-icon:hover {
+    color: rgb(228, 77, 77);
+}
+
+.home-icon {
+    background: none;
+    border: none;
+    color: white;
+    position: absolute;
+    top: 30px;
+    left: 120px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.refresh-icon {
+    background: none;
+    border: none;
+    color: white;
+    position: absolute;
+    top: 30px;
+    left: 200px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.refresh-icon:hover {
+    color: rgb(77, 172, 74);
+}
+
+.password-icon {
+    color: rgb(255, 255, 255);
+    position: absolute;
+    top: 30px;
+    right: 200px;
+    font-size: 30px;
+}
+
+.custom-table-spacing {
+    margin-top: 30px; 
+}
+
+.custom-container-border {
+    background-color: rgb(82, 81, 81);
+    border-radius: 20px; /* Arredonda as pontas */
+    padding: 20px; /* Espaçamento interno para o conteúdo não tocar nas bordas */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Opcional: adiciona uma sombra para um pouco de profundidade */
+    margin-top: 100px; /* Espaço acima do container */
+}
+
+#spinner-refresh {
+    display: none;
+    position: absolute;
+    top: 37px;
+    left: 200px;
+    font-size: 30px;
+}
+
+.item-dsc {
+    background: none;
+    border: none;
+    color: white;
+    text-align: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: fadeIn 0.3s ease-out;
+    margin-top: 1vh;
+}
+.remove-item {
+    cursor: pointer;
+    color: #ff5555;
+    margin-left: 20px;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.btn-outline-custom {
+    color: #fff; /* Cor do texto */
+    border-color: #007bff; /* Cor da borda */
+    background-color: #007bff; /* Cor de fundo */
+    transition: all 0.3s ease; /* Suaviza a transição de estados */
+    width: 30vh;
+}
+
+.btn-outline-custom:hover, .btn-outline-custom:focus {
+    color: #ffffff; /* Cor do texto ao passar o mouse e focar */
+    background-color:#007bffa1; /* Cor de fundo ao passar o mouse e focar */
+}
+
+#removeButton {
+    color: red !important;
+}
+
+.pagination .page-link {
+    color: black; /* Cor da letra */
+    background-color: white; /* Cor do fundo */
+    border: 1px solid #dee2e6; /* Bordas (opcional, para manter o design Bootstrap) */
+}
+
+.pagination .page-item.active .page-link {
+    color: white; /* Cor da letra para o item ativo */
+    background-color: gray; /* Cor do fundo para o item ativo */
+    border-color: gray; /* Cor da borda para o item ativo */
+}
+
+.custom-search-form .form-control {
+    border-right: none;
+}
+
+.custom-search-form .btn-custom-search {
+    border-left: none;
+    background-color: gray;
+    color: white;
+}
+
+/* Opcional: Adiciona um efeito no foco do campo de pesquisa */
+.custom-search-form .form-control:focus {
+    box-shadow: 0 0 0 0.2rem rgba(128, 128, 128, 0.25);
+}
+
+/* Opcional: Alterações para o botão ao passar o mouse */
+.custom-search-form .btn-custom-search:hover {
+    background-color: #505050;
+}
+
+.alert {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.alert-error {
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    color: #a94442;
+}
+
+.alert-success {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #3c763d;
+}

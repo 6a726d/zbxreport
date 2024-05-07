@@ -1,0 +1,49 @@
+<div class="modal fade" id="md-report" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Gerar Relatórios</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <!-- Campo Layout -->
+                    <div class="mb-3">
+                        <label for="layout-select" class="form-label">Layout</label>
+                        <select name="layout" class="form-select" id="layout-select" required>
+                            {% for i in layout %}
+                            <option value="{{ i.pk }}">{{ i.layoutname }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <!-- Campo Host Group -->
+                    <div class="mb-3">
+                        <label for="host-group-select" class="form-label">Host Group</label>
+                        <select name="hostgroup" class="form-select" id="host-group-select" required>
+                            {% for i in grupos %}
+                            <option value="{{ i.pk }}">{{ i.gpname }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <!-- Campos de Data -->
+                    <div class="mb-3">
+                        <label for="date-from" class="form-label">De</label>
+                        <input name="datefrom" type="datetime-local" class="form-control" id="date-from" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="date-to" class="form-label">Até</label>
+                        <input name="dateto" type="datetime-local" class="form-control" id="date-to" required>
+                    </div>
+                </div>
+                <input type="hidden" name="report" value="create-report">
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Emitir Relatório</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+gerar relatorio
+    grupo
+    host
+    layout
+
+
+layout
+    cabeçalho
+        Nome
+        Info
+        Logo
+
+    host
+        Itens

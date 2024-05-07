@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<a href="/" class="home-icon">
+    <i class="fa-solid fa-house-chimney"></i>
+</a>
+<form action="" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="action" value="save-itens">
+    <button id="btn-refresh" type="submit" class="refresh-icon">
+        <i class="fa-solid fa-rotate"></i>
+    </button>
+    <div id="spinner-refresh" class="spinner-border text-light" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</form>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form action="" method="get">
+                <div class="input-group custom-search-form">
+                    <input type="text" class="form-control" placeholder="Pesquisar..." aria-label="Pesquisar" aria-describedby="button-addon2" name="search" value="{{ request.GET.search }}">
+                    <button class="btn btn-custom-search" type="submit" id="button-addon2">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container custom-table-spacing">
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Item</th>
+                <th scope="col" class="text-center">Alterar Descrição</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in object_list %}
+            <tr>
+                <td>{{ i.itemname }}</td>
+                <td class="text-center">
+                    <button class="item-dsc" data-bs-toggle="modal" data-bs-target="#editItemModal{{ i.pk }}" data-id="{{ i.id }}" data-description="{{ i.itemdscreport }}">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="2">Nenhum item cadastrado.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% include 'vwitens/pagination.html' %}
+</div>
+
+{% for i in object_list %}
+{% include 'vwitens/modals/md-dscreport.html' %}
+{% endfor %}
+{% endblock %}

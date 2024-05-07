@@ -1,0 +1,69 @@
+<div class="modal fade" id="md-layout" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Layouts de Relatórios</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                
+                <!-- Div com Scroll para a Tabela -->
+                <div style="max-height: 300px; overflow-y: auto;">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="layoutTableBody">
+                            {% for i in layout %}
+                            <tr>
+                                <td class="text-center fw-bold align-middle">{{ i.layoutname }}</td>
+                                <td><a href="{% url 'layoutedit' i.pk %}" class="btn"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                                <td>
+                                    <button class="btn" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal{{ i.pk }}">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="3">Nenhum Layout cadastrado.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="{% url 'layout' %}" class="btn btn-primary mb-3">Novo Layout</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% for i in layout %}
+<div class="modal fade" id="confirmDeleteModal{{ i.pk }}" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmar Exclusão</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Tem certeza que deseja excluir este layout?
+            </div>
+            <div class="modal-footer">
+                <form method="POST" id="deleteForm">
+                    {% csrf_token %}
+                    <input type="hidden" name="layout_id" value="{{ i.pk }}">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-danger">Excluir</button>
+                    <input type="hidden" name="delete" value="del-layout">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}

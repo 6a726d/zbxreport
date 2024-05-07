@@ -1,0 +1,25 @@
+<div class="modal fade" id="editItemModal{{ i.pk }}" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar Descrição do Item</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="itemDescription" class="col-form-label">Descrição:</label>
+                        <textarea class="form-control" id="descricaoTextarea" rows="3" placeholder="Descrição do Item" name="itemdsc">{{ i.itemdscreport }}</textarea>
+                    </div>
+                    <input type="hidden" name="itemid" value="{{ i.pk }}">
+                </div>
+                <input type="hidden" name="action" value="save-dsc">
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

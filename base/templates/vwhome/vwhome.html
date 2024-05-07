@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row vh-100 d-flex align-items-center">
+        <div class="col-12 d-flex justify-content-center">
+            <img src="{% static 'img/zbx.png' %}" alt="Logo" class="logohead">
+        </div>
+        <div class="col d-flex flex-column justify-content-center">
+            <div class="d-grid gap-2">
+                <button type="button" class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#md-report">GERAR RELATÓRIO</button>
+                <a href="{% url 'itens' %}" class="btn btn-custom">ITENS</a>
+                <a href="{% url 'host' %}" class="btn btn-custom">HOSTS</a>
+                <a href="{% url 'hostgroup' %}" class="btn btn-custom">GRUPO DE HOSTS</a>
+                <button type="button" class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#md-layout">LAYOUTS DE RELATÓRIO</button>
+                <button type="button" class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#md-api">CONEXÃO</button>
+            </div>
+        </div>
+        <div class="col-12 d-flex justify-content-center">
+            <img src="{% static 'img/GtqPlusWT.png' %}" alt="Logo" class="logofoot">
+        </div>
+    </div>
+</div>
+
+{% include 'vwhome/modals/md-api.html' %}
+{% include 'vwhome/modals/md-report.html' %}
+{% include 'vwhome/modals/md-layout.html' %}
+{% endblock %}
